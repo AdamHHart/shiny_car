@@ -124,9 +124,9 @@ debugObject.envMapIntensity = 5;
  */
 gltfLoader.load("/models/DamagedHelmet/glTF/DamagedHelmet.gltf", (gltf) => {
   gltf.scene.scale.set(0.25, 0.25, 0.25);
-  // gltf.scene.position.x = 0.5;
-  // gltf.scene.position.z = 0.5;
-  gltf.scene.position.y = 1;
+  // gltf.scene.position.x = 3;
+  gltf.scene.position.y = 1.25;
+  // gltf.scene.position.z = -3;
   gltf.scene.rotation.y = Math.PI * 0.5;
 
   scene.add(gltf.scene);
@@ -197,7 +197,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-camera.position.set(4, 1, -4);
+camera.position.set(1, 1, -1);
 scene.add(camera);
 
 // Controls
