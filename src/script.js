@@ -2,10 +2,10 @@ import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+
 import { gsap } from "gsap";
 import { Raycaster } from "three";
 import { VRButton } from "three/examples/jsm/webxr/VRButton.js";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 
 /**
  * Loaders
@@ -124,19 +124,8 @@ debugObject.envMapIntensity = 5;
 /**
  * Models
  */
-// gltfLoader.load("/models/DamagedHelmet/glTF/DamagedHelmet.gltf", (gltf) => {
-//   gltf.scene.scale.set(0.25, 0.25, 0.25);
-//   // gltf.scene.position.x = 3;
-//   gltf.scene.position.y = 1.25;
-//   // gltf.scene.position.z = -3;
-//   gltf.scene.rotation.y = Math.PI * 0.5;
-
-//   scene.add(gltf.scene);
-
-//   updateAllMaterials();
-// });
-gltfLoader.load("/models/mercedes_non_compressed.glb", (gltf) => {
-  gltf.scene.scale.set(0.75, 0.75, 0.75);
+gltfLoader.load("/models/DamagedHelmet/glTF/DamagedHelmet.gltf", (gltf) => {
+  gltf.scene.scale.set(0.25, 0.25, 0.25);
   // gltf.scene.position.x = 3;
   gltf.scene.position.y = 1.25;
   // gltf.scene.position.z = -3;
@@ -146,6 +135,20 @@ gltfLoader.load("/models/mercedes_non_compressed.glb", (gltf) => {
 
   updateAllMaterials();
 });
+
+// Mercedes Object
+
+// gltfLoader.load("/models/mercedes_non_compressed.glb", (gltf) => {
+//   gltf.scene.scale.set(0.75, 0.75, 0.75);
+//   // gltf.scene.position.x = 3;
+//   gltf.scene.position.y = 1.25;
+//   // gltf.scene.position.z = -3;
+//   gltf.scene.rotation.y = Math.PI * 0.5;
+
+//   scene.add(gltf.scene);
+
+//   updateAllMaterials();
+// });
 
 // Points of interest
 
