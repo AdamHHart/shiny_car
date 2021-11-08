@@ -4,6 +4,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { gsap } from "gsap";
 import { Raycaster } from "three";
+import { VRButton } from "three/examples/jsm/webxr/VRButton.js";
 
 /**
  * Loaders
@@ -217,7 +218,22 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 /**
  * Animate
+ *
+ *
  */
+
+// VR Button
+document.body.appendChild(VRButton.createButton(renderer));
+
+/**
+ * Animate
+ */
+const clock = new THREE.Clock();
+
+renderer.setAnimationLoop(function () {
+  renderer.render(scene, camera);
+});
+
 const tick = () => {
   // Update controls
   controls.update();
