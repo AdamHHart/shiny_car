@@ -5,6 +5,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { gsap } from "gsap";
 import { Raycaster } from "three";
 import { VRButton } from "three/examples/jsm/webxr/VRButton.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 
 /**
  * Loaders
@@ -40,6 +41,7 @@ const loadingManager = new THREE.LoadingManager(
   }
 );
 const gltfLoader = new GLTFLoader(loadingManager);
+// const dracoLoader = new DRACOLoader(loadingManager);
 const cubeTextureLoader = new THREE.CubeTextureLoader(loadingManager);
 
 /**
@@ -122,8 +124,19 @@ debugObject.envMapIntensity = 5;
 /**
  * Models
  */
-gltfLoader.load("/models/DamagedHelmet/glTF/DamagedHelmet.gltf", (gltf) => {
-  gltf.scene.scale.set(0.25, 0.25, 0.25);
+// gltfLoader.load("/models/DamagedHelmet/glTF/DamagedHelmet.gltf", (gltf) => {
+//   gltf.scene.scale.set(0.25, 0.25, 0.25);
+//   // gltf.scene.position.x = 3;
+//   gltf.scene.position.y = 1.25;
+//   // gltf.scene.position.z = -3;
+//   gltf.scene.rotation.y = Math.PI * 0.5;
+
+//   scene.add(gltf.scene);
+
+//   updateAllMaterials();
+// });
+gltfLoader.load("/models/mercedes_non_compressed.glb", (gltf) => {
+  gltf.scene.scale.set(0.75, 0.75, 0.75);
   // gltf.scene.position.x = 3;
   gltf.scene.position.y = 1.25;
   // gltf.scene.position.z = -3;
