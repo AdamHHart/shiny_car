@@ -234,40 +234,40 @@ renderer.setAnimationLoop(function () {
   renderer.render(scene, camera);
 });
 
-const tick = () => {
-  // Update controls
-  controls.update();
+// const tick = () => {
+//   // Update controls
+//   controls.update();
 
-  if (sceneReady) {
-    //   Go through each point for html ref
-    for (const point of points) {
-      const screenPosition = point.position.clone();
-      screenPosition.project(camera);
+//   if (sceneReady) {
+//     //   Go through each point for html ref
+//     for (const point of points) {
+//       const screenPosition = point.position.clone();
+//       screenPosition.project(camera);
 
-      raycaster.setFromCamera(screenPosition, camera);
-      const intersects = raycaster.intersectObjects(scene.children, true);
-      if (intersects.length === 0) {
-      } else {
-        const intersectionDistance = intersects[0].distance;
-        const pointDistance = point.position.distanceTo(camera.position);
+//       raycaster.setFromCamera(screenPosition, camera);
+//       const intersects = raycaster.intersectObjects(scene.children, true);
+//       if (intersects.length === 0) {
+//       } else {
+//         const intersectionDistance = intersects[0].distance;
+//         const pointDistance = point.position.distanceTo(camera.position);
 
-        if (intersectionDistance < pointDistance) {
-          point.element.classList.remove("visible");
-        } else {
-          point.element.classList.add("visible");
-        }
-      }
+//         if (intersectionDistance < pointDistance) {
+//           point.element.classList.remove("visible");
+//         } else {
+//           point.element.classList.add("visible");
+//         }
+//       }
 
-      const translateX = screenPosition.x * sizes.width * 0.5;
-      const translateY = -screenPosition.y * sizes.height * 0.5;
-      point.element.style.transform = `translateX(${translateX}px) translateY(${translateY}px)`;
-    }
-  }
-  // Render
-  renderer.render(scene, camera);
+//       const translateX = screenPosition.x * sizes.width * 0.5;
+//       const translateY = -screenPosition.y * sizes.height * 0.5;
+//       point.element.style.transform = `translateX(${translateX}px) translateY(${translateY}px)`;
+//     }
+//   }
+//   // Render
+//   renderer.render(scene, camera);
 
-  // Call tick again on the next frame
-  window.requestAnimationFrame(tick);
-};
+//   // Call tick again on the next frame
+//   window.requestAnimationFrame(tick);
+// };
 
-tick();
+// tick();
