@@ -172,24 +172,10 @@ scene.add(floorObject);
 /**
  * Models
  */
-gltfLoader.load("/models/DamagedHelmet/glTF/DamagedHelmet.gltf", (gltf) => {
-  gltf.scene.scale.set(0.25, 0.25, 0.25);
-  // gltf.scene.position.x = 3;
-  gltf.scene.position.y = 0;
-  // gltf.scene.position.z = -3;
-  gltf.scene.rotation.y = Math.PI * 0.5;
-
-  scene.add(gltf.scene);
-
-  updateAllMaterials();
-});
-
-// Mercedes Object
-
-// gltfLoader.load("/models/mercedes_non_compressed.glb", (gltf) => {
-//   gltf.scene.scale.set(0.75, 0.75, 0.75);
+// gltfLoader.load("/models/DamagedHelmet/glTF/DamagedHelmet.gltf", (gltf) => {
+//   gltf.scene.scale.set(0.25, 0.25, 0.25);
 //   // gltf.scene.position.x = 3;
-//   gltf.scene.position.y = 1.25;
+//   gltf.scene.position.y = 0;
 //   // gltf.scene.position.z = -3;
 //   gltf.scene.rotation.y = Math.PI * 0.5;
 
@@ -197,6 +183,20 @@ gltfLoader.load("/models/DamagedHelmet/glTF/DamagedHelmet.gltf", (gltf) => {
 
 //   updateAllMaterials();
 // });
+
+// Mercedes Object
+
+gltfLoader.load("/models/mercedes_non_compressed.glb", (gltf) => {
+  gltf.scene.scale.set(1, 1, 1);
+  // gltf.scene.position.x = 3;
+  gltf.scene.position.y = -0.42;
+  // gltf.scene.position.z = -3;
+  gltf.scene.rotation.y = Math.PI * 1;
+
+  scene.add(gltf.scene);
+
+  updateAllMaterials();
+});
 
 // Points of interest
 
@@ -261,7 +261,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-camera.position.set(1, 1, -1);
+camera.position.set(2.5, 1, -1);
 scene.add(camera);
 
 // Controls
