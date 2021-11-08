@@ -123,9 +123,10 @@ debugObject.envMapIntensity = 5;
  * Models
  */
 gltfLoader.load("/models/DamagedHelmet/glTF/DamagedHelmet.gltf", (gltf) => {
-  gltf.scene.scale.set(0.5, 0.5, 0.5);
-  gltf.scene.position.x = 1;
-  gltf.scene.position.z = 1;
+  gltf.scene.scale.set(0.25, 0.25, 0.25);
+  gltf.scene.position.x = 0.5;
+  gltf.scene.position.z = 0.5;
+  gltf.scene.position.y = 2;
   gltf.scene.rotation.y = Math.PI * 0.5;
 
   scene.add(gltf.scene);
