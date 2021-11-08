@@ -121,13 +121,37 @@ scene.environment = environmentMap;
 
 debugObject.envMapIntensity = 5;
 
+const image = new Image();
+const texture = new THREE.Texture(image);
+
+image.onload = () => {
+  texture.needsUpdate = true;
+};
+
+// image.src = "/textures/surfaces/cobblestone.jpeg";
+image.src = "/textures/surfaces/cobble_albedo.png";
+
+const textureLoader = new THREE.TextureLoader();
+
+// const geometry =
+// const material =
+const floorObject = new THREE.Mesh(
+  new THREE.BoxGeometry(4, 0.2, 4),
+  new THREE.MeshBasicMaterial({
+    map: texture,
+  })
+);
+floorObject.position.y = -1;
+
+scene.add(floorObject);
+
 /**
  * Models
  */
 gltfLoader.load("/models/DamagedHelmet/glTF/DamagedHelmet.gltf", (gltf) => {
   gltf.scene.scale.set(0.25, 0.25, 0.25);
   // gltf.scene.position.x = 3;
-  gltf.scene.position.y = 1.25;
+  gltf.scene.position.y = 0;
   // gltf.scene.position.z = -3;
   gltf.scene.rotation.y = Math.PI * 0.5;
 
