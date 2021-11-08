@@ -121,26 +121,50 @@ scene.environment = environmentMap;
 
 debugObject.envMapIntensity = 5;
 
-const image = new Image();
-const texture = new THREE.Texture(image);
+// TEXTURES
 
-image.onload = () => {
-  texture.needsUpdate = true;
+loadingManager.onStart = () => {
+  console.log("onload");
 };
-
-// image.src = "/textures/surfaces/cobblestone.jpeg";
-image.src = "/textures/surfaces/cobble_albedo.png";
-
-const textureLoader = new THREE.TextureLoader();
-
-// const geometry =
-// const material =
-const floorObject = new THREE.Mesh(
-  new THREE.BoxGeometry(4, 0.2, 4),
-  new THREE.MeshBasicMaterial({
-    map: texture,
-  })
+loadingManager.onLoader = () => {
+  console.log("onprogress");
+};
+loadingManager.onError = () => {
+  console.log("onerror");
+};
+const textureLoader = new THREE.TextureLoader(loadingManager);
+const albedoTexture = textureLoader.load(
+  "/textures/surfaces/cobble_albedo.png"
 );
+const heightTexture = textureLoader.load(
+  "/textures/surfaces/cobble_height.png"
+);
+const normalTexture = textureLoader.load(
+  "/textures/surfaces/cobble_normal.png"
+);
+const aoTexture = textureLoader.load("/textures/surfaces/cobble_ao.png");
+const roughnessTexture = textureLoader.load(
+  "/textures/surfaces/cobble_roughness.png"
+);
+
+// Texture Wrapping
+albedoTexture.repeat.x = 1;
+albedoTexture.repeat.y = 1;
+albedoTexture.wrapS = THREE.RepeatWrapping;
+albedoTexture.wrapT = THREE.RepeatWrapping;
+
+// Floor Geometry
+const geometry = new THREE.BoxBufferGeometry(8, 0.2, 8);
+const material = new THREE.MeshStandardMaterial({
+  map: albedoTexture,
+  aoMap: aoTexture,
+  aoMapIntensity: 3,
+  displacementMap: heightTexture,
+  roughnessMap: roughnessTexture,
+  normalMap: normalTexture,
+});
+
+const floorObject = new THREE.Mesh(geometry, material);
 floorObject.position.y = -1;
 
 scene.add(floorObject);
