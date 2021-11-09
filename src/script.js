@@ -105,24 +105,37 @@ const updateAllMaterials = () => {
  * Environment map
  */
 
+// Pano Fetch Chrome Extension
+// https://chrome.google.com/webstore/detail/pano-fetch/ggmfokbjchlhboclfngkneflhkopebbh/related?hl=en
+
+// Panorama to Cubemap App
+// https://jaxry.github.io/panorama-to-cubemap/
+
 // Favourite Google StreetView Links
 // https://www.google.com/maps/@40.8285461,14.2173696,3a,75y,73.16h,69.11t/data=!3m6!1e1!3m4!1sbxy_7mAF57A70AyE7cPwPQ!2e0!7i16384!8i8192
 
 const environmentMap = cubeTextureLoader.load([
-  "/textures/environmentMaps/4/px.png",
-  "/textures/environmentMaps/4/nx.png",
-  "/textures/environmentMaps/4/py.png",
-  "/textures/environmentMaps/4/ny.png",
-  "/textures/environmentMaps/4/pz.png",
-  "/textures/environmentMaps/4/nz.png",
+  "/textures/environmentMaps/3/px.jpg",
+  "/textures/environmentMaps/3/nx.jpg",
+  "/textures/environmentMaps/3/py.jpg",
+  "/textures/environmentMaps/3/ny.jpg",
+  "/textures/environmentMaps/3/pz.jpg",
+  "/textures/environmentMaps/3/nz.jpg",
 ]);
 
 environmentMap.encoding = THREE.sRGBEncoding;
 
+// const cubeMapMaterial = new THREE.MeshStandardMaterial();
+// cubeMapMaterial.map = environmentMap;
+// const cubeMap = new THREE.Mesh(
+//   new THREE.BoxBufferGeometry(5, 5, 5),
+//   environmentMap
+// );
+
 scene.background = environmentMap;
 scene.environment = environmentMap;
 
-debugObject.envMapIntensity = 5;
+debugObject.envMapIntensity = 4;
 
 // TEXTURES
 
@@ -158,6 +171,10 @@ albedoTexture.wrapT = THREE.RepeatWrapping;
 
 // Floor Geometry
 const geometry = new THREE.BoxBufferGeometry(8, 0.2, 8, 500, 1, 500);
+
+// Would prefer a curved PlaneGeometry here
+// const geometry = new THREE.SphereBufferGeometry(10, 1000, 1000);
+
 const material = new THREE.MeshStandardMaterial({
   // wireframe: true,
   map: albedoTexture,
@@ -168,8 +185,12 @@ const material = new THREE.MeshStandardMaterial({
   normalMap: normalTexture,
 });
 
+// Material for mesh testing
+// const material = new THREE.MeshStandardMaterial({ color: 0x010101 });
+
 const floorObject = new THREE.Mesh(geometry, material);
-floorObject.position.y = -1;
+floorObject.position.y = -1.03;
+// floorObject.rotation.x = 90;
 
 scene.add(floorObject);
 
@@ -225,7 +246,7 @@ console.log(points);
 /**
  * Lights
  */
-const directionalLight = new THREE.DirectionalLight("#ffffff", 0);
+const directionalLight = new THREE.DirectionalLight("#ffffff", 1);
 directionalLight.castShadow = true;
 directionalLight.shadow.camera.far = 15;
 directionalLight.shadow.mapSize.set(1024, 1024);
