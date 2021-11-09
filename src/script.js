@@ -2,10 +2,9 @@ import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-
-import { gsap } from "gsap";
-import { Raycaster } from "three";
 import { VRButton } from "three/examples/jsm/webxr/VRButton.js";
+import { Raycaster } from "three";
+import { gsap } from "gsap";
 
 /**
  * Loaders
@@ -105,13 +104,17 @@ const updateAllMaterials = () => {
 /**
  * Environment map
  */
+
+// Favourite Google StreetView Links
+// https://www.google.com/maps/@40.8285461,14.2173696,3a,75y,73.16h,69.11t/data=!3m6!1e1!3m4!1sbxy_7mAF57A70AyE7cPwPQ!2e0!7i16384!8i8192
+
 const environmentMap = cubeTextureLoader.load([
-  "/textures/environmentMaps/0/px.jpg",
-  "/textures/environmentMaps/0/nx.jpg",
-  "/textures/environmentMaps/0/py.jpg",
-  "/textures/environmentMaps/0/ny.jpg",
-  "/textures/environmentMaps/0/pz.jpg",
-  "/textures/environmentMaps/0/nz.jpg",
+  "/textures/environmentMaps/4/px.png",
+  "/textures/environmentMaps/4/nx.png",
+  "/textures/environmentMaps/4/py.png",
+  "/textures/environmentMaps/4/ny.png",
+  "/textures/environmentMaps/4/pz.png",
+  "/textures/environmentMaps/4/nz.png",
 ]);
 
 environmentMap.encoding = THREE.sRGBEncoding;
@@ -154,8 +157,9 @@ albedoTexture.wrapS = THREE.RepeatWrapping;
 albedoTexture.wrapT = THREE.RepeatWrapping;
 
 // Floor Geometry
-const geometry = new THREE.BoxBufferGeometry(8, 0.2, 8);
+const geometry = new THREE.BoxBufferGeometry(8, 0.2, 8, 500, 1, 500);
 const material = new THREE.MeshStandardMaterial({
+  // wireframe: true,
   map: albedoTexture,
   aoMap: aoTexture,
   aoMapIntensity: 3,
@@ -221,7 +225,7 @@ console.log(points);
 /**
  * Lights
  */
-const directionalLight = new THREE.DirectionalLight("#ffffff", 3);
+const directionalLight = new THREE.DirectionalLight("#ffffff", 0);
 directionalLight.castShadow = true;
 directionalLight.shadow.camera.far = 15;
 directionalLight.shadow.mapSize.set(1024, 1024);
