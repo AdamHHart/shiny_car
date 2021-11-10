@@ -115,12 +115,12 @@ const updateAllMaterials = () => {
 // https://www.google.com/maps/@40.8285461,14.2173696,3a,75y,73.16h,69.11t/data=!3m6!1e1!3m4!1sbxy_7mAF57A70AyE7cPwPQ!2e0!7i16384!8i8192
 
 const environmentMap = cubeTextureLoader.load([
-  "/textures/environmentMaps/1/px.jpg",
-  "/textures/environmentMaps/1/nx.jpg",
-  "/textures/environmentMaps/1/py.jpg",
-  "/textures/environmentMaps/1/ny.jpg",
-  "/textures/environmentMaps/1/pz.jpg",
-  "/textures/environmentMaps/1/nz.jpg",
+  "/textures/environmentMaps/3/px.jpg",
+  "/textures/environmentMaps/3/nx.jpg",
+  "/textures/environmentMaps/3/py.jpg",
+  "/textures/environmentMaps/3/ny.jpg",
+  "/textures/environmentMaps/3/pz.jpg",
+  "/textures/environmentMaps/3/nz.jpg",
 ]);
 
 environmentMap.encoding = THREE.sRGBEncoding;
@@ -193,48 +193,48 @@ floorObject.position.y = -1.03;
 // floorObject.rotation.x = 90;
 
 // FLOOR COBBLESTONE
-// scene.add(floorObject);
+scene.add(floorObject);
 
 /**
  * Models
  */
-// gltfLoader.load("/models/DamagedHelmet/glTF/DamagedHelmet.gltf", (gltf) => {
-//   gltf.scene.scale.set(0.25, 0.25, 0.25);
+gltfLoader.load("/models/DamagedHelmet/glTF/DamagedHelmet.gltf", (gltf) => {
+  gltf.scene.scale.set(0.25, 0.25, 0.25);
+  // gltf.scene.position.x = 3;
+  gltf.scene.position.y = 1;
+  // gltf.scene.position.z = -3;
+  gltf.scene.rotation.y = Math.PI * 0.5;
+
+  scene.add(gltf.scene);
+
+  updateAllMaterials();
+});
+
+// Mercedes Object
+
+// gltfLoader.load("/models/mercedes_non_compressed.glb", (gltf) => {
+//   gltf.scene.scale.set(1, 1, 1);
 //   // gltf.scene.position.x = 3;
-//   gltf.scene.position.y = 0;
+//   gltf.scene.position.y = -0.42;
 //   // gltf.scene.position.z = -3;
-//   gltf.scene.rotation.y = Math.PI * 0.5;
+//   gltf.scene.rotation.y = Math.PI * 1;
 
 //   scene.add(gltf.scene);
 
 //   updateAllMaterials();
 // });
+// gltfLoader.load("/models/hangar.gltf", (gltf) => {
+//   gltf.scene.scale.set(1, 1, 1);
+//   // gltf.scene.position.x = 3;
+//   gltf.scene.position.y = 0.2;
+//   gltf.scene.position.x = 5;
+//   // gltf.scene.position.z = -3;
+//   gltf.scene.rotation.y = Math.PI * 1.5;
 
-// Mercedes Object
+//   scene.add(gltf.scene);
 
-gltfLoader.load("/models/mercedes_non_compressed.glb", (gltf) => {
-  gltf.scene.scale.set(1, 1, 1);
-  // gltf.scene.position.x = 3;
-  gltf.scene.position.y = -0.42;
-  // gltf.scene.position.z = -3;
-  gltf.scene.rotation.y = Math.PI * 1;
-
-  scene.add(gltf.scene);
-
-  updateAllMaterials();
-});
-gltfLoader.load("/models/hangar.gltf", (gltf) => {
-  gltf.scene.scale.set(1, 1, 1);
-  // gltf.scene.position.x = 3;
-  gltf.scene.position.y = 0.2;
-  gltf.scene.position.x = 5;
-  // gltf.scene.position.z = -3;
-  gltf.scene.rotation.y = Math.PI * 1.5;
-
-  scene.add(gltf.scene);
-
-  updateAllMaterials();
-});
+//   updateAllMaterials();
+// });
 
 // Points of interest
 
